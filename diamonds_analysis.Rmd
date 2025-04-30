@@ -1,0 +1,92 @@
+---
+title: "Diamonds Dataset Analysis"
+author: "Immanuel David"
+output: html_document
+---
+
+# Introduction
+
+The diamonds dataset, available in R through the 'ggplot2' package, contains data on over 50,000 diamonds, including features such as carat, cut, color, clarity, and price. This dataset is widely used to understand the characteristics that influence diamond pricing.
+
+# Objective
+
+* Identify key factors influencing diamond prices.
+* Visualize the relationships between these features.
+* Uncover any trends or patterns that could inform pricing strategies
+
+# Dataset Overview
+This following code will load the 'diamonds' dataset through 'ggplot2' package. 
+```{r}
+library(ggplot2)
+data(diamonds)
+summary(diamonds)
+```
+
+# Data Exploration
+Check the basic structure of the dataset.
+```{r}
+str(diamonds)
+```
+
+A quick summary for the dataset.
+```{r}
+summary(diamonds)
+```
+
+# Data Cleaning
+
+Now let's check for any missing value.
+```{r}
+colSums(is.na(diamonds))
+```
+
+As there's no missing values, let's check for any duplicate entries. 
+```{r}
+any(duplicated(diamonds))
+```
+
+There seems to be some duplicate data. So let's filters them out.
+```{r}
+diamonds <- diamonds[!duplicated(diamonds), ]
+```
+
+Now let's check for any incorrect or inconsistent values
+```{r}
+unique(diamonds$cut)
+unique(diamonds$color)
+unique(diamonds$clarity)
+unique(diamonds$carat)
+```
+
+# Data Analysis
+Now let's identify which factor affects the price of a diamond.
+```{r}
+cor(diamonds[, c("carat", "depth", "table", "price")])
+```
+As this reveals that _carat_ and _price_ has a strong correlation (~0.92), _depth_ and _price_ are nearly uncorrelated (~-0.01) and _table_ has a small positive correlation with _price_ (~0.12). Now let's visualize the findings to see things more clearly!
+
+# Data Visualization
+Let's compare price by carat.
+```{r}
+library(ggplot2)
+ggplot(diamonds, aes(x=carat, y=price, color=clarity))+
+  geom_point()+
+  theme_minimal()
+```
+
+This helps us visualize how carat influence the pricing of diamonds. Let's also visualize cut, color and clarity with price. 
+```{r}
+ggplot(diamonds, aes(x=cut, y=price))+
+  geom_jitter()
+
+ggplot(diamonds, aes(x=color, y=price))+
+  geom_jitter()
+
+ggplot(diamonds, aes(x=clarity, y=price))+
+  geom_jitter()
+```
+
+This clearly shows the value of cut, color and clarity doesn't influence the pricing of diamonds. 
+
+# Conclusion
+Based on the analysis, carat emerges as the significant factor that influences the pricing of a diamond. Understanding  the weight of carat in pricing can be valuable for both customers and sellers in making informed decisions.
