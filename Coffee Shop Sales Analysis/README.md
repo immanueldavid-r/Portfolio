@@ -15,3 +15,4 @@ Note: This project uses Power BI to analyze sales trends and product performance
 *	Weekend vs weekday sales trends.
 * Monthly sales trend. 
 *	Key insights and recommendations to make better informed decision making.
+Note: The Result are in both .pptx and .pdf formats
