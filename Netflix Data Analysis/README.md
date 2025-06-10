@@ -1,4 +1,4 @@
-# Netflix Analysis
+# Netflix Data Analysis
 This project aims to create a compelling data storytelling experience through data visualization. The project will leverage the publicly available dataset on Kaggle to present insightful narratives about Netflix content rise, trends and variety of content. 
 ## Objective:
 ### Content Diversity:
