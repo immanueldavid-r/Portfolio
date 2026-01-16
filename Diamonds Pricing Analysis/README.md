@@ -1,5 +1,5 @@
 # Diamonds Pricing Analysis
-**Objective**
+## Objective:
 The goal of this project is to identify the key factors that influence diamond pricing. Using the built-in ggplot2::diamonds dataset, I explored how attributes like carat, cut, color, and clarity correlate with price.
 
 📦 **Dataset**
